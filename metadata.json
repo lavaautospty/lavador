@@ -1,0 +1,7 @@
+{
+  "name": "FullShell - Car Wash Manager",
+  "description": "SaaS multi-tenant para la gestión de autolavados con sistema de fidelidad, finanzas y facturación por WhatsApp.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}

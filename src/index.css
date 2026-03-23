@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-zinc-50 text-zinc-900 antialiased;
+  }
+}
+
+.recharts-default-tooltip {
+  @apply !bg-white !border-none !shadow-xl !rounded-xl !p-3;
+}
+
+.recharts-tooltip-label {
+  @apply !text-zinc-900 !font-bold !mb-1;
+}
+
+.recharts-tooltip-item {
+  @apply !text-zinc-500 !text-sm;
+}
