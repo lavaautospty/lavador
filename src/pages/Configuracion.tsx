@@ -395,7 +395,8 @@ export default function Configuracion() {
             <div className="p-4 bg-zinc-50 rounded-xl border border-zinc-100">
               <p className="text-sm text-zinc-600">
                 Para renovar o cambiar tu plan, por favor contacta a soporte técnico. 
-                Los pagos se realizan vía Yappy al <strong>6027-5561</strong>.
+                Los pagos se realizan vía Yappy / CMF al <strong>6027-5561</strong> o Banco General (Ahorros 04-72-98-123456-7).
+                Monto: <strong>$24.99</strong>
               </p>
               <a 
                 href="https://wa.me/50760275561?text=Hola%2C%20quiero%20renovar%20mi%20membres%C3%ADa%20FullShell."

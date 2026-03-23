@@ -436,8 +436,14 @@ export default function Lavados() {
 
       {/* Modal */}
       {showModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-          <div className="bg-white w-full max-w-lg rounded-3xl shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200">
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+          onClick={() => setShowModal(false)}
+        >
+          <div 
+            className="bg-white w-full max-w-lg rounded-3xl shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="p-6 border-b border-zinc-100 flex items-center justify-between">
               <h3 className="text-xl font-bold text-zinc-900">Nuevo Lavado</h3>
               <button onClick={() => setShowModal(false)} className="p-2 hover:bg-zinc-100 rounded-full transition-colors">
@@ -620,8 +626,14 @@ export default function Lavados() {
 
       {/* Modal de Factura / Preview */}
       {showInvoiceModal && selectedLavado && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm print:hidden">
-          <div className="bg-white w-full max-w-md rounded-3xl shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200">
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm print:hidden"
+          onClick={() => setShowInvoiceModal(false)}
+        >
+          <div 
+            className="bg-white w-full max-w-md rounded-3xl shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="p-4 border-b border-zinc-100 flex items-center justify-between">
               <h3 className="text-lg font-bold text-zinc-900">Vista Previa de Recibo</h3>
               <button onClick={() => setShowInvoiceModal(false)} className="p-2 hover:bg-zinc-100 rounded-full transition-colors">
@@ -705,20 +717,28 @@ export default function Lavados() {
               </div>
             </div>
 
-            <div className="p-6 bg-white border-t border-zinc-100 grid grid-cols-2 gap-4">
+            <div className="p-6 bg-white border-t border-zinc-100 flex flex-col gap-3">
+              <div className="grid grid-cols-2 gap-4">
+                <button 
+                  onClick={handlePrint}
+                  className="flex items-center justify-center gap-2 py-3 bg-zinc-100 text-zinc-900 font-bold rounded-xl hover:bg-zinc-200 transition-all"
+                >
+                  <Printer className="w-5 h-5" />
+                  Imprimir
+                </button>
+                <button 
+                  onClick={() => handleWhatsAppInvoice(selectedLavado)}
+                  className="flex items-center justify-center gap-2 py-3 bg-emerald-600 text-white font-bold rounded-xl hover:bg-emerald-700 transition-all"
+                >
+                  <MessageSquare className="w-5 h-5" />
+                  WhatsApp
+                </button>
+              </div>
               <button 
-                onClick={handlePrint}
-                className="flex items-center justify-center gap-2 py-3 bg-zinc-100 text-zinc-900 font-bold rounded-xl hover:bg-zinc-200 transition-all"
+                onClick={() => setShowInvoiceModal(false)}
+                className="w-full py-3 bg-zinc-900 text-white font-bold rounded-xl hover:bg-zinc-800 transition-all"
               >
-                <Printer className="w-5 h-5" />
-                Imprimir
-              </button>
-              <button 
-                onClick={() => handleWhatsAppInvoice(selectedLavado)}
-                className="flex items-center justify-center gap-2 py-3 bg-emerald-600 text-white font-bold rounded-xl hover:bg-emerald-700 transition-all"
-              >
-                <MessageSquare className="w-5 h-5" />
-                WhatsApp
+                Cerrar
               </button>
             </div>
           </div>
@@ -727,65 +747,14 @@ export default function Lavados() {
 
       {/* Modal Nuevo Cliente */}
       {showNewClientModal && (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-          <div className="bg-white w-full max-w-md rounded-3xl shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200">
-            <div className="p-6 border-b border-zinc-100 flex items-center justify-between">
-              <h3 className="text-xl font-bold text-zinc-900">Registrar Nuevo Cliente</h3>
-              <button 
-                onClick={() => setShowNewClientModal(false)}
-                className="p-2 hover:bg-zinc-100 rounded-full transition-colors"
-              >
-                <X className="w-6 h-6" />
-              </button>
-            </div>
-            <form onSubmit={handleCreateClient} className="p-6 space-y-4">
-              <div className="space-y-1">
-                <label className="text-xs font-bold text-zinc-500 uppercase tracking-wider">Nombre Completo</label>
-                <input 
-                  type="text" 
-                  required
-                  value={newClientData.nombre}
-                  onChange={(e) => setNewClientData({...newClientData, nombre: e.target.value})}
-                  className="w-full px-4 py-3 bg-zinc-50 border border-zinc-200 rounded-xl outline-none focus:ring-2 focus:ring-zinc-900"
-                  placeholder="Juan Pérez"
-                />
-              </div>
-              <div className="space-y-1">
-                <label className="text-xs font-bold text-zinc-500 uppercase tracking-wider">Teléfono</label>
-                <input 
-                  type="tel" 
-                  value={newClientData.telefono}
-                  onChange={(e) => setNewClientData({...newClientData, telefono: e.target.value})}
-                  className="w-full px-4 py-3 bg-zinc-50 border border-zinc-200 rounded-xl outline-none focus:ring-2 focus:ring-zinc-900"
-                  placeholder="+507 6000-0000"
-                />
-              </div>
-              <div className="space-y-1">
-                <label className="text-xs font-bold text-zinc-500 uppercase tracking-wider">Placa</label>
-                <input 
-                  type="text" 
-                  required
-                  value={newClientData.placa}
-                  onChange={(e) => setNewClientData({...newClientData, placa: e.target.value})}
-                  className="w-full px-4 py-3 bg-zinc-50 border border-zinc-200 rounded-xl outline-none focus:ring-2 focus:ring-zinc-900"
-                  placeholder="ABC-123"
-                />
-              </div>
-              <button 
-                type="submit"
-                className="w-full py-4 bg-zinc-900 text-white font-bold rounded-xl hover:bg-zinc-800 transition-all shadow-lg shadow-zinc-200 mt-4"
-              >
-                Registrar Cliente
-              </button>
-            </form>
-          </div>
-        </div>
-      )}
-
-      {/* Modal Nuevo Cliente */}
-      {showNewClientModal && (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-          <div className="bg-white w-full max-w-md rounded-3xl shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200">
+        <div 
+          className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+          onClick={() => setShowNewClientModal(false)}
+        >
+          <div 
+            className="bg-white w-full max-w-md rounded-3xl shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="p-6 border-b border-zinc-100 flex items-center justify-between">
               <h3 className="text-xl font-bold text-zinc-900">Registrar Nuevo Cliente</h3>
               <button 

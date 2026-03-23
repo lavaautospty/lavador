@@ -117,7 +117,7 @@ export default function RegistroComercio() {
               Plan de Membresía
             </h4>
             <p className="text-sm text-zinc-500 mb-4">
-              Comienzas con 10 días de prueba gratuita. Luego puedes activar tu plan enviando tu confirmación de pago por WhatsApp.
+              Comienzas con 10 días de prueba gratuita. Luego puedes activar tu plan enviando tu confirmación de pago por WhatsApp (Yappy, CMF o Transferencia).
             </p>
             <div className="flex items-center gap-4">
               <div className="flex-1 p-4 bg-white border border-zinc-200 rounded-xl text-center">
@@ -126,7 +126,7 @@ export default function RegistroComercio() {
               </div>
               <div className="flex-1 p-4 bg-zinc-900 text-white rounded-xl text-center">
                 <p className="text-xs font-bold text-zinc-400 uppercase">Premium</p>
-                <p className="text-lg font-bold">$29.99 / mes</p>
+                <p className="text-lg font-bold">$24.99 / mes</p>
               </div>
             </div>
           </div>

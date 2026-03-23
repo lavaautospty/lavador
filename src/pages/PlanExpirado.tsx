@@ -25,14 +25,18 @@ export default function PlanExpirado() {
 
         <div className="p-4 bg-zinc-50 rounded-2xl border border-zinc-200 text-left space-y-3">
           <p className="text-xs font-bold text-zinc-400 uppercase tracking-wider">Instrucciones de Pago</p>
-          <div className="space-y-2">
-            <div className="flex justify-between items-center">
-              <span className="text-sm font-medium text-zinc-600">Yappy:</span>
+          <div className="space-y-3">
+            <div className="flex justify-between items-center border-b border-zinc-100 pb-2">
+              <span className="text-sm font-medium text-zinc-600">Yappy / CMF:</span>
               <span className="text-sm font-bold text-zinc-900">6027-5561</span>
             </div>
-            <div className="flex justify-between items-center">
-              <span className="text-sm font-medium text-zinc-600">Monto:</span>
-              <span className="text-sm font-bold text-zinc-900">$24.99</span>
+            <div className="flex justify-between items-center border-b border-zinc-100 pb-2">
+              <span className="text-sm font-medium text-zinc-600">Banco General:</span>
+              <span className="text-xs font-bold text-zinc-900">Ahorros 04-72-98-123456-7</span>
+            </div>
+            <div className="flex justify-between items-center pt-1">
+              <span className="text-sm font-medium text-zinc-600">Monto Mensual:</span>
+              <span className="text-lg font-bold text-zinc-900">$24.99</span>
             </div>
           </div>
         </div>
